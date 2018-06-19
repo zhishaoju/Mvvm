@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- data 的第一种写法 -->
+    <!--<data>-->
+
+    <!-- data 的第二种写法 可以指定ActivityMainBinding生成的地方-->
+    <data class="prictise.com.mvvm.model.UserBind">
+        <!-- 第一种方式 -->
+        <!--<variable
+            name="user"
+            type="prictise.com.mvvm.model.User" />-->
+
+        <!-- 第二种方式 -->
+        <!--<import type="prictise.com.mvvm.model.User" />
+
+        <variable
+            name="user"
+            type="User" />-->
+
+        <!-- 第三种方式 取别名-->
+        <import
+            alias="typeUser"
+            type="prictise.com.mvvm.model.User" />
+
+        <variable
+            name="user"
+            type="typeUser" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:img="@{user.img}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`用户名：` + user.name}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`密码：` + user.password}" />
+        </LinearLayout>
+    </ScrollView>
+</layout>
